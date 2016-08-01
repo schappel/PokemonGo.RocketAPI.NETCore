@@ -28,7 +28,19 @@ namespace PokemonGo.RocketAPI.Helpers
 
         public static NameValueCollection ParseQueryString(string query)
         {
-            return new NameValueCollection();
+            if (query.IndexOf("?") != -1)
+                query = query.Substring(query.IndexOf("?") +1);
+
+            query = WebUtility.UrlDecode(query);
+            var collection = new NameValueCollection();
+
+            foreach (var pair in query.Split(','))
+            {
+                if (pair.IndexOf("=") == -1) continue;
+                collection.Add(pair.Split('=')[0], pair.Split('=')[1]);
+            }
+
+            return collection;
         }
     }
 }
