@@ -1,0 +1,3 @@
+[submodule "GPSOAuthSharp"]
+	path = GPSOAuthSharp
+	url = https://github.com/Davidblkx/GPSOAuthSharp.NetCore.git
